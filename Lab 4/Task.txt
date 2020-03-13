@@ -1,0 +1,42 @@
+The NIST digit dataset is formed by a set of handwritten digits from 0 to 9. In the file exercise_3.4.py you will find a script that loads this dataset.
+
+Each sample X[i] is a 16x16 pixel image, that is stored in a vector of length 256 representing a grey value for each pixel (an integer from 0 to 144). To plot the i-th sample you can use the show_digit() function. The dataset is labeled. This means that for each sample we know the actual digit that was written. The label for sample i is stored in y[i].
+
+In the python script you will find a list with 3 linear classifiers with stochastic gradient descent. The list is called classifiers.
+
+Exercise 0 (already done):
+
+For each classifier, do the following steps:
+
+Split the dataset into a training set and a test set using the sklearn.model_selection.train_test_split() function. This function will require a percentage of test samples in the complete set, as a number in the range [0,1].
+Train the model using the dataset, and compute the prediction accuracy (using the method score of the classifier).
+Repeat this process for different train/test split ratios and plot the errors. You can do this by defining a list called heldout, that will contain different ratios, and then iterate over the list.
+For a proper error estimation, it is a good idea that you repeat step 2 several rounds and use the average error of these repetitions.
+
+Exercise 1:
+
+Select the classifier and the training/split percentage that you consider as the most successful. We are going to compare it to a MLP. In order to do this, comment the other classifiers and add a MLPClassifier to the list. The MLP requires the definition of the number of hidden layers and the neurons per layer. This is done with hidden_layer_sizes=(n1,n2,..,nk) for a network with k hidden layers and ni neurons in layer i.Use the following set of parameters:
+
+MLPClassifier(hidden_layer_sizes=(5), max_iter=130, alpha=1e-4, solver='sgd', verbose=10, tol=1e-4, random_state=1, learning_rate_init=.1)
+
+Train a MLP with 1 hidden layer and a varying number of neurons between 5 and 20. You can do this by setting hidden_layer_sizes=(n) when the classifier is created, but you can also change a parameter afterwards by using the method set_params().  E.g., you can type clf.set_params(hidden_layer_sizes=(8)).
+
+Most likely, the results will be really poor. You must normalize the dataset which, essentially, is to force all the values in X to be in the range [0,1]. Ask the professor about this if you have any doubts.
+
+After normalization, discuss the quality of the classifier and the training time. You should start by doing some trainings to see that the learning converges, and then run the training several times with a fixed set of parameters. Compute the average accuracy and and the training time, as in exercise 0. You can remove the verbose=10 to reduce the amount of information shown during the training.
+
+Exercise 2:
+
+Modify the MLP to have two hidden layers with a number of neurons in the same range (5 to 20) and repeat the previous exercise. Again, you can do this by setting hidden_layer_sizes=(n1,n2) when the classifier is created or bay using the set_params() method.
+
+Exercise 3:
+
+Take the MLP that you consider as most successful from exercises 1 and 2. Rerun the test for different training/test ratios and generate the graph of accuracy versus relative training set size.
+
+Exercise 4 (optional):
+
+Using the same MLP as in the previous exercise, test different learning_rate_init values. Find a range of values that yields good results and explain what happens at both ends of this range. Plot the achieved accuracy versus training time for each value.
+
+Exercise 5 (optional):
+
+Read the documentation of the parameters 'early_stopping' and 'validation_fraction'. Discuss the difference between using this and the way we have used the sklearn.model_selection.train_test_split() function. Can you improve the performance of your MLP classifier using these two parameters? Discuss the change in both the test and training error when using this new approach compared to the original results (those of exercise 3).
