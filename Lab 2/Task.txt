@@ -1,0 +1,7 @@
+Consider the banana shaped dataset a.k.a. two moons dataset with three different levels of noise as shown in the attached scripts both in python and matlab.
+
+Study how the gaussian linear and quadratic classifiers behave on these datasets. In particular, use ROC curves and imagine that one of the classes is more important than the others.
+
+You can use either python or matlab. Or preferably, both. LinearDiscriminantAnalysis and QuadraticDiscriminantAnalysis correspond to ldc and qdc in prtools. 
+
+Please draw your own conclusions and include them as comments along with your code. Try to send clear and organized code and use graphics to support your conclusions.
