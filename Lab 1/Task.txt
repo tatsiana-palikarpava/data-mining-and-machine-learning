@@ -1,0 +1,27 @@
+Have a look at the file 'exercise01.m' and try to understand it. It illustrates the use of testc, confmat, roc, plote, etc (you can use help or doc to get more details).
+
+Once you run it, you have the results obtained from a 2-class classifier (no matter which) on a given data (you can use any 2-class dataset).
+
+On one hand you have the output of a single predictor in the variable 'Res' (from which you can obtain different error measures using testc or confmat).
+
+On the other hand you have the two type of errors (for each class) for different values of thresholds on the corresponding classifier likelihoods. This information is kept in the fields of the structure output by function 'roc' (have a look at the struct output by 'roc') which is in the variable 'e'.
+
+Note that the above classifier corresponds to a threshold value of 0.5.
+
+You can use the function 'testc' to obtain several type of performance measures from 'Res' (try all the options by yourself). Or you can compute these measures directly from the errors output by 'roc' (for all thresholds).
+
+You are supposed to do (at least) the following:
+
+0) Compute FP and FN rates and display the FP/FN curve and the values of FP and FN for all thresholds. Display the results corresponding to the .5 threshold as points. (this is already done in the provided script)
+
+1) Repeat exactly the same as in the previous item but use instead TP/FN as in the slides. 
+
+2) Repeat again the same but use Precision/Recall measures. The definitions of precision and recall are in the slides. Try to understand what they mean also.
+
+3) From the errors computed by 'roc' (for each class), obtain the average accuracy for all threshold values and display the corresponding curve in a figure. Plot the accuracy of the .5 threshold classifier as a point. Look for the best possible value along the average accuracy curve and mark it as a different point.
+
+WHAT TO UPLOAD:
+
+Add the code corresponding to items 1--3 at the end of the script and rename it as 'exercise01XXX' where XXX are your initials. Upload this single file. Be sure to include an appropriate amount of comments along your code.
+
+Even if you have problems and you cannot complete some or all the steps, upload the file and explain the kind of problems you have had.
