@@ -1,0 +1,45 @@
+Load the attached file ex04data.mat and have a look.
+
+a) Consider at least k-NN classifiers with values of k up to 40
+and obtain and plot curves with resubstitution and cross-validation
+errors (and corresponding standard deviations when appropriate).
+
+Plot all error estimates in a unique curve as a function of k.
+Add any other error estimate you consider but explain your decisions.
+
+Comment any aspect in the obtained results that you consider worth it.
+If you see something extrange in these results try to figure out what is
+happening.
+
+b) Select the optimal value of k according the cross-validation estimate
+and plot the corresponding averaged ROC curve in a separate figure.
+Add any other important error estimate in this curve you consider 
+interesting.
+
+Comment any interesing thing you observe in the corresponding curve or in
+the added error estimates or in its relation.
+
+Include code, comments and instructions to run your code in appropriate, 
+well-identified files and pack them in a unique compressed file and upload it.
+
+In Matlab/PRtools, you can perform cross validation evaluation using the prtools' function crossval:
+
+AvgErr = crossval(Dataset, Classifier, Nfolds, Nrep=1) 
+[AvgErr, Stdev] = crossval(Dataset, Classifier, Nfolds, Nrep>1) 
+
+But you can also manipulate intermediate results by obtaining the partition in folds in an index array as:
+
+R  = crossval(Dataset, [], Nfolds, 0)
+
+From R, you can access the i-th fold as  Dataset(R==i,:) and then compute errors or anything by yourself.
+
+In Python/Scikit-learn, you can use cross_val_score to obtain error rates per fold or cross_val_predict to obtain predictions for all input vectors:
+
+error_rates = cross_val_score(predictor, InputFeatures, InputLabels, cv=5)
+predictions = cross_val_predict(predictor, InputFeatures, InputLabels, cv=5, method='predict')
+
+To load the data use instead the file ex04plain.mat as follows:
+from scipy.io import loadmat
+Data  = loadmat('ex04plain.mat')
+Adata = Data['Adata']
+Alab  = Data['Alab']
